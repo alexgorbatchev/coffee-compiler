@@ -2,11 +2,12 @@ fs     = require 'fs'
 path   = require 'path'
 coffee = require 'coffee-script'
 eco    = require 'eco'
-config = require 'modules/config'
 
 module.exports = compiler =
+  locals : {}
+
   fromSource : (src, filename, debug, callback) ->
-    src = eco.render src, { config }
+    src = eco.render src, locals
 
     if debug
       { js, v3SourceMap } = coffee.compile src, bare: true, sourceMap: true, filename: filename

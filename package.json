@@ -1,8 +1,9 @@
 {
-    "name": "coffee-compiler",
-    "main": "./coffee-compiler.coffee",
-    "version": "0.1.1",
-    "dependencies": {
-        "coffee-script": "~1.6.0"
-    }
+  "name": "coffee-compiler",
+  "main": "./coffee-compiler.coffee",
+  "version": "0.1.1",
+  "dependencies": {
+    "coffee-script": "~1.6.0",
+    "eco": "~1.1.0-rc-3"
+  }
 }
