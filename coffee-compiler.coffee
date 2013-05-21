@@ -7,7 +7,7 @@ module.exports = compiler =
   locals : {}
 
   fromSource : (src, filename, debug, callback) ->
-    src = eco.render src, locals
+    src = eco.render src, compiler.locals or {}
 
     if debug
       { js, v3SourceMap } = coffee.compile src, bare: true, sourceMap: true, filename: filename
