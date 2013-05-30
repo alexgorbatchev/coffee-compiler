@@ -1,7 +1,11 @@
 {
   "name": "coffee-compiler",
   "main": "./coffee-compiler.coffee",
-  "version": "0.1.2",
+  "version": "0.1.3",
+  "repository": {
+    "type": "git",
+    "url": "git@git.alexgorbatchev.com:alexgorbatchev/coffee-compiler.git"
+  },
   "dependencies": {
     "coffee-script": "~1.6.0",
     "eco": "~1.1.0-rc-3"
