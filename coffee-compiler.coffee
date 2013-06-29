@@ -4,10 +4,8 @@ coffee = require 'coffee-script'
 eco    = require 'eco'
 
 module.exports = compiler =
-  locals : {}
-
   fromSource : (src, filename, debug, callback) ->
-    src = eco.render src, compiler.locals or {}
+    src = eco.render src, @
 
     if debug
       { js, v3SourceMap } = coffee.compile src, bare: true, sourceMap: true, filename: filename
@@ -26,6 +24,6 @@ module.exports = compiler =
     callback null, code
 
   fromFile : (filepath, debug, callback) ->
-    fs.readFile filepath, 'utf8', (err, src) ->
+    fs.readFile filepath, 'utf8', (err, src) =>
       return callback err if err?
-      compiler.fromSource src, filepath, debug, callback
+      compiler.fromSource.apply @, [ src, filepath, debug, callback ]
