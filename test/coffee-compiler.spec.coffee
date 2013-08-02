@@ -20,11 +20,10 @@ describe 'coffee-compiler', ->
     it 'uses function context with eco templates', (done) ->
       context = foo : 'hello'
 
-      coffee.fromSource.apply context, [ 'console.log "<%= @foo %>"', 'filename', false, (err, results) ->
+      coffee.fromSource.call context, 'console.log "<%= @foo %>"', 'filename', false, (err, results) ->
         expect(err).to.be.falsy
         expect(results).to.equal 'console.log("hello");\n'
         done()
-      ]
 
   describe '::fromFile', ->
     it 'compiles from file', (done) ->
@@ -33,11 +32,10 @@ describe 'coffee-compiler', ->
         expect(results).to.contain "foo: 'hello'"
         done()
 
-    it 'using function context with eco templates', (done) ->
+    it 'uses function context with eco templates', (done) ->
       context = foo : 'hello'
 
-      coffee.fromFile.apply context, [ "#{__dirname}/fixture.coffee", false, (err, results) ->
+      coffee.fromFile.call context, "#{__dirname}/fixture.coffee", false, (err, results) ->
         expect(err).to.be.falsy
         expect(results).to.equal 'console.log("hello");\n'
         done()
-      ]
