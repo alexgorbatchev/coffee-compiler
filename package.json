@@ -1,7 +1,7 @@
 {
   "name": "coffee-compiler",
   "main": "./coffee-compiler.coffee",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "scripts": {
     "test": "mocha test/*.spec.coffee"
   },

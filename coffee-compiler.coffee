@@ -13,7 +13,7 @@ module.exports = compiler =
 
       if v3SourceMap
         map = JSON.parse v3SourceMap
-        map.sources = [ path.basename filename ]
+        map.sources = [ filename ]
         map.sourcesContent = [ src ]
 
         code += '\n//@ sourceMappingURL=data:application/json;base64,'
