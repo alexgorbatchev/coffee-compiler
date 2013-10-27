@@ -1,19 +1,19 @@
 {
   "name": "coffee-compiler",
-  "main": "./coffee-compiler.coffee",
-  "version": "0.1.5",
+  "main": "./coffee-compiler.js",
+  "version": "0.2.0",
   "scripts": {
-    "test": "mocha test/*.spec.coffee"
+    "test": "./node_modules/.bin/mocha test/*.spec.coffee",
+    "pretest": "./node_modules/.bin/coffee --bare --compile coffee-compiler.coffee"
   },
   "repository": {
     "type": "git",
     "url": "git@git.alexgorbatchev.com:alexgorbatchev/coffee-compiler.git"
   },
-  "dependencies": {
-    "eco": "~1.1.0-rc-3"
+  "peerDependencies": {
+    "coffee-script": "1.x"
   },
   "devDependencies": {
-    "coffee-script": "~1.6.0",
     "chai": "~1.6.0",
     "request": "~2.21.0",
     "mocha": "~1.10.0"

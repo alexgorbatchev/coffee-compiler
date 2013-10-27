@@ -1,6 +1,6 @@
 request = require 'request'
 chai    = require 'chai'
-coffee  = require '../coffee-compiler'
+coffee  = require '../coffee-compiler.js'
 expect  = chai.expect
 
 describe 'coffee-compiler', ->
@@ -17,12 +17,15 @@ describe 'coffee-compiler', ->
         expect(results).to.contain 'sourceMappingURL='
         done()
 
-    it 'uses function context with eco templates', (done) ->
-      context = foo : 'hello'
-
-      coffee.fromSource.call context, 'console.log "<%= @foo %>"', 'filename', false, (err, results) ->
-        expect(err).to.be.falsy
-        expect(results).to.equal 'console.log("hello");\n'
+    it 'has pretty errors', (done) ->
+      coffee.fromSource 'syntax_error +', 'filename', false, (err, results) ->
+        expect(err).to.be.ok
+        expect(err.message).to.equal """
+          filename:1:14: error: unexpected CALL_END
+          syntax_error +
+                       ^
+        """
+        expect(results).to.be.undefined
         done()
 
   describe '::fromFile', ->
@@ -32,10 +35,14 @@ describe 'coffee-compiler', ->
         expect(results).to.contain "foo: 'hello'"
         done()
 
-    it 'uses function context with eco templates', (done) ->
-      context = foo : 'hello'
-
-      coffee.fromFile.call context, "#{__dirname}/fixture.coffee", false, (err, results) ->
-        expect(err).to.be.falsy
-        expect(results).to.equal 'console.log("hello");\n'
+    it 'has pretty errors', (done) ->
+      filename = "#{__dirname}/_fixture_syntax_error.coffee"
+      coffee.fromFile filename, false, (err, results) ->
+        expect(err).to.be.ok
+        expect(err.message).to.equal """
+          #{filename}:1:14: error: unexpected CALL_END
+          syntax_error +
+                       ^
+        """
+        expect(results).to.be.undefined
         done()
