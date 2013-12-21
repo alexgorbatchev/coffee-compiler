@@ -1,48 +1,45 @@
 request = require 'request'
 chai    = require 'chai'
+fibrous = require 'fibrous'
 coffee  = require '../coffee-compiler.js'
 expect  = chai.expect
 
+SOURCE = """
+  console.log "hello"
+"""
+
 describe 'coffee-compiler', ->
   describe '::fromSource', ->
-    it 'compiles from source', (done) ->
-      coffee.fromSource 'console.log "hello"', 'filename', false, (err, results) ->
-        expect(err).to.be.falsy
-        expect(results).to.equal 'console.log("hello");\n'
-        done()
+    it 'compiles from source', fibrous ->
+      results = coffee.sync.fromSource SOURCE
+      expect(results).to.equal '''
+        (function() {
+          console.log("hello");
 
-    it 'adds source maps', (done) ->
-      coffee.fromSource 'console.log "hello"', 'filename', true, (err, results) ->
-        expect(err).to.be.falsy
-        expect(results).to.contain 'sourceMappingURL='
-        done()
+        }).call(this);
 
-    it 'has pretty errors', (done) ->
-      coffee.fromSource 'syntax_error +', 'filename', false, (err, results) ->
-        expect(err).to.be.ok
-        expect(err.message).to.equal """
-          filename:1:14: error: unexpected CALL_END
-          syntax_error +
-                       ^
-        """
-        expect(results).to.be.undefined
-        done()
+      '''
+
+    it 'adds source maps', fibrous ->
+      results = coffee.sync.fromSource SOURCE, sourceMap: yes
+      expect(results).to.contain 'sourceMappingURL='
+
+    it 'has pretty errors', fibrous ->
+      expect(-> coffee.sync.fromSource 'syntax_error +').to.throw """
+        coffee-compiler:1:14: error: unexpected CALL_END
+        syntax_error +
+                     ^
+      """
 
   describe '::fromFile', ->
-    it 'compiles from file', (done) ->
-      coffee.fromFile __filename, false, (err, results) ->
-        expect(err).to.be.falsy
-        expect(results).to.contain "foo: 'hello'"
-        done()
+    it 'compiles from file', fibrous ->
+      results = coffee.sync.fromFile __filename
+      expect(results).to.contain "foo: 'hello'"
 
-    it 'has pretty errors', (done) ->
+    it 'has pretty errors', fibrous ->
       filename = "#{__dirname}/_fixture_syntax_error.coffee"
-      coffee.fromFile filename, false, (err, results) ->
-        expect(err).to.be.ok
-        expect(err.message).to.equal """
-          #{filename}:1:14: error: unexpected CALL_END
-          syntax_error +
-                       ^
-        """
-        expect(results).to.be.undefined
-        done()
+      expect(-> coffee.sync.fromFile filename).to.throw """
+        #{filename}:1:14: error: unexpected CALL_END
+        syntax_error +
+                     ^
+      """
