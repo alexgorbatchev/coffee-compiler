@@ -1,9 +1,13 @@
 {
   "name": "coffee-compiler",
   "main": "./coffee-compiler.js",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A handy CoffeeScript compiler from a series of compilers that have the same signature.",
-  "keywords": ["coffeesciprt", "coffee", "compiler"],
+  "keywords": ["coffeescript", "coffee", "compiler"],
+  "author": {
+    "name": "Alex Gorbatchev",
+    "email": "alex.gorbatchev@gmail.com"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/alexgorbatchev/coffee-compiler.git"
@@ -13,7 +17,7 @@
     "pretest": "./node_modules/.bin/coffee --bare --compile *.coffee"
   },
   "peerDependencies": {
-    "coffee-script": ">=1.x.x"
+    "coffee-script": ">=1.6.2"
   },
   "devDependencies": {
     "coffee-script": "~1.6.3",

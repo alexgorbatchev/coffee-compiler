@@ -18,7 +18,11 @@ The absolute best thing to do is to sign up with [Gittip](http://gittip.com) if 
 
     npm install coffee-compiler
 
-## Usage Example
+## Testing
+
+    npm test
+
+## Using
 
     var coffee = require('coffee-compiler');
 
@@ -35,15 +39,14 @@ The absolute best thing to do is to sign up with [Gittip](http://gittip.com) if 
       console.log(js);
     });
 
-## Testing
-
-    npm test
-
 ## Other modules
 
 * [jade-compiler](https://github.com/alexgorbatchev/jade-compiler)
 * [stylus-compiler](https://github.com/alexgorbatchev/stylus-compiler)
 * [coffee-compiler](https://github.com/alexgorbatchev/coffee-compiler)
+* [coffee-errors](https://github.com/alexgorbatchev/coffee-errors)
+* [bubble-boy](https://github.com/alexgorbatchev/bubble-boy)
+* [syntaxhighlighter](https://github.com/alexgorbatchev/syntaxhighlighter)
 
 ## License
 
