@@ -13,9 +13,10 @@
     "pretest": "./node_modules/.bin/coffee --bare --compile *.coffee"
   },
   "peerDependencies": {
-    "coffee-script": ">=1.6.3"
+    "coffee-script": ">=1.x.x"
   },
   "devDependencies": {
+    "coffee-script": "~1.6.3",
     "chai": "~1.6.0",
     "mocha": "~1.10.0",
     "fibrous": "~0.3.3"
