@@ -1,7 +1,7 @@
 {
   "name": "coffee-compiler",
   "main": "./coffee-compiler.js",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "A handy CoffeeScript compiler from a series of compilers that have the same signature.",
   "keywords": ["coffeescript", "coffee", "compiler"],
   "author": {
