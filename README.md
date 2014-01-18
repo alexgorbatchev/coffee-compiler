@@ -47,6 +47,7 @@ The absolute best thing to do is to sign up with [Gittip](http://gittip.com) if 
 * [coffee-errors](https://github.com/alexgorbatchev/coffee-errors)
 * [bubble-boy](https://github.com/alexgorbatchev/bubble-boy)
 * [syntaxhighlighter](https://github.com/alexgorbatchev/syntaxhighlighter)
+* [query-filter](https://github.com/alexgorbatchev/query-filter)
 
 ## License
 
