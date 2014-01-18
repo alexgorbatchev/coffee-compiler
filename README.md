@@ -3,7 +3,10 @@
 A handy [CoffeeScript](http://coffeescript.org/) compiler from a series of compilers that have the same signature.
 
 [![Dependency status](https://david-dm.org/alexgorbatchev/coffee-compiler.png)](https://david-dm.org/alexgorbatchev/coffee-compiler)
-[![Build Status](https://travis-ci.org/alexgorbatchev/coffee-compiler.png)](https://travis-ci.org/alexgorbatchev/coffee-compiler)
+[![devDependency Status](https://david-dm.org/alexgorbatchev/coffee-compiler/dev-status.png)](https://david-dm.org/alexgorbatchev/coffee-compiler#info=devDependencies)
+[![Build Status](https://secure.travis-ci.org/alexgorbatchev/coffee-compiler.png?branch=master)](https://travis-ci.org/alexgorbatchev/coffee-compiler)
+
+[![NPM](https://nodei.co/npm/coffee-compiler.png?downloads=true)](https://npmjs.org/package/coffee-compiler)
 
 ## Support
 
